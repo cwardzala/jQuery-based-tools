@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+	    <title>jQuery Accessible Navigation plugin</title>
+		<link rel="stylesheet" href="nav.css" type="text/css" media="screen">
+	</head>
+	<body>
+		<div id="doc" class="yui-t1">
+			<div id="hd">
+				<h1>jQuery Accessible Navigation plugin</h1>
+				<!--[if !IE]>Start Main Nav<![endif]-->
+				<div id="nav">
+					<div class="tier0" id="seasonal">
+						<ul>
+							<li class="main-nav-1">
+								<a href="#">Category 1</a>
+								<div class="tier1">
+									<ul>
+										<li><a href="#">Sub Category 1</a></li>
+										<li><a href="#">Sub Category 2</a></li>
+										<li><a href="#">Sub Category 3</a></li>
+										<li><a href="#">Sub Category 4</a></li>
+										<li><a href="#">Sub Category 5</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="main-nav-2">
+								<a href="#">Category 2</a>
+								<div class="tier1">
+									<ul>
+										<li><a href="#">Sub Category 1</a></li>
+										<li><a href="#">Sub Category 2</a></li>
+										<li><a href="#">Sub Category 3</a></li>
+										<li><a href="#">Sub Category 4</a></li>
+										<li><a href="#">Sub Category 5</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="main-nav-3">
+								<a href="#">Category 3</a>
+								<div class="tier1">
+									<ul>
+										<li><a href="#">Sub Category 1</a></li>
+										<li><a href="#">Sub Category 2</a></li>
+										<li><a href="#">Sub Category 3</a></li>
+										<li><a href="#">Sub Category 4</a></li>
+										<li><a href="#">Sub Category 5</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="main-nav-4">
+								<a href="#">Category 4</a>
+								<div class="tier1">
+									<ul>
+										<li><a href="#">Sub Category 1</a></li>
+										<li><a href="#">Sub Category 2</a></li>
+										<li><a href="#">Sub Category 3</a></li>
+										<li><a href="#">Sub Category 4</a></li>
+										<li><a href="#">Sub Category 5</a></li>
+									</ul>
+								</div>
+							</li>
+							<li class="main-nav-5">
+								<a href="#">Category 5</a>
+								<div class="tier1">
+									<ul>
+										<li><a href="#">Sub Category 1</a></li>
+										<li><a href="#">Sub Category 2</a></li>
+										<li><a href="#">Sub Category 3</a></li>
+										<li><a href="#">Sub Category 4</a></li>
+										<li><a href="#">Sub Category 5</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!--[if !IE]>End Main Nav<![endif]-->
+			</div>
+			<div id="bd">
+				<!--[if !IE]> body <![endif]-->
+				<select name="select" id="select">
+					<option value="option1">option1</option>
+					<option value="option2">option2</option>
+				</select>
+			</div>
+			<div id="ft">
+				<!--[if !IE]> Footer <![endif]-->
+		    </div>
+		</div>
+		<div id="javascripts">
+			<script src="//code.jquery.com/jquery-1.4.4.min.js"></script>
+			<script src="navigation.plugin.js"></script>
+			<script>$('#nav').navigation();</script>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+body {height:600px;}
+/* ---------- Main Navigation ----------- */
+#nav {width:100%; clear:both;}
+#nav ul { margin:0; position:relative; z-index:1; padding:0;}
+#nav ul li {float:left; list-style:none; height:38px; width:137px; text-align:left; position:relative; padding:0;}
+#nav ul li a {display:block; color:#666666; color:#005696; font-size:1.167em; text-decoration:none; padding:10px 0 0;}
+
+/* ---------- Nav Teir 0 styles ---------- */
+#nav .tier0 {position:relative; z-index:4;}
+#nav .tier0 li {z-index:3;}
+#nav .tier0 li a { position:relative; z-index:3;}
+
+/* Nav hovers */
+#nav .tier0 .hover { z-index:5;}
+#nav .tier0 .hover a {color:#1fb25a;}
+
+/* ---------- Nav Teir 1 styles ---------- */
+#nav ul li .tier1 {position:absolute; z-index:2; top:-9999px; left:-9999px; background:#fff; padding:0 8px 8px 0;}
+#nav ul li .tier1 li {float:none; width:auto;}
+
+#nav .tier0 li.hover .tier1 {position:absolute; left:0; top:38px; background:#ccc; border:solid 1px #e6e6e6;}
+
+#nav .tier0 li .tier1 ul {width:147px; height:auto; background:transparent; padding:8px 0 0 8px; text-align:left; float:left; _display:inline-block;}
+
+#nav .tier0 li .tier1 ul li { float:none; margin-left:0; margin-right:0; text-indent:0; text-align:left; height:auto; padding-bottom:8px; padding-top:0; background:none; width:auto;}
+
+#nav .tier0 li .tier1 ul li a { background:none; height:auto; font-size:0.917em; color:#808080; padding:0; text-align:left;}
+#nav .tier0 li .tier1 ul li a:hover {color:#000; text-decoration:underline;}
+
+.col1 {min-width:146px; _width:156px;}
+
+#nav .tier0 .main-nav-3 {width:145px;}
+#nav #main-nav-5 {display:none;}
+
+.clearfix:after, #nav:after, #nav ul:after, #nav ul li .tier1:after {visibility: hidden; display: block; font-size: 0; content: "."; clear: both; height: 0;}
+.clearfix, #nav, #nav ul, #nav ul li .tier1 {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix, * html #nav, * html #nav ul, * html #nav ul li .tier1 { height: 1%; }
+.clearfix, #nav, #nav ul, #nav ul li .tier1 { display: block; }
+/* End hide from IE-mac */

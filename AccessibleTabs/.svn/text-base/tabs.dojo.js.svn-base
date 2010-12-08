@@ -1,0 +1,46 @@
+dojo.require("dojo.NodeList-traverse");
+dojo.NodeList.prototype.atabs = function(options){
+  	var o = {
+		mode: "tabs",
+		defaultTab: 1
+	}
+	dojo.mixin(o,options);
+	var me = this;
+	
+	function tab_click(click_event){
+		// We don't want the link to act normally
+		click_event.preventDefault();
+		// assign variable for href
+	    var href = dojo.query(this).attr('href')[0].replace("#","");
+		// if already active or href equals #blank dont change tab, just return
+		var parent = me.query(this).parent('li')[0];
+	   	if (dojo.hasClass(parent,'active') || href === "#blank" || dojo.hasClass(parent,'disabled')) {return;}
+		me.query('.active').removeClass('active');
+		me.query(this).parents('li').addClass('active');
+		me.query('.open').addClass('hidden').removeClass('open');
+		me.query('a[name='+href+']').parents('.target').removeClass('hidden').addClass('open');
+	}
+	
+	function accordion_click(click_event){
+		/* We don't want the link to act normally */
+		click_event.preventDefault();
+		/* assign variable for href */
+	    var href = dojo.query(this).attr('href')[0].replace("#","");
+		/* if already active or href equals #blank dont change tab, just return */
+		var parent = me.query(this).parent()[0];
+	   	if (href === "#blank" || dojo.hasClass(parent,'disabled')) {return;}
+		me.query(this).parent().toggleClass("active");
+		me.query('a[name='+href+']').parent('.target').toggleClass("hidden");
+	}
+
+	var tabi = o.defaultTab-1;
+	// bind the click function
+	if (o.mode == "accordion"){me.query('.trigger a').connect('onclick',accordion_click);}
+	else {me.query('.trigger a').connect('onclick',tab_click);}
+	// hide all targets except the default open
+	me.query('.target').forEach(function(item, i){
+		me.query('.topLink').addClass('hidden');
+		if (i !== tabi) {dojo.addClass(item,'hidden');}
+		else {dojo.addClass(item,'open'); dojo.addClass(me.query('.trigger')[tabi],'active');}
+	});
+}

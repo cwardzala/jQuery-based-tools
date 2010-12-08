@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="utf-8">
+	    <title>jQuery ajax forms plugn</title>
+	</head>
+	<body>
+		<div id="doc">
+			<div id="hd">
+				<h1>jQuery ajax forms plugn</h1>
+				<p>This will take the form(s) passed and enable ajax submit for them using the action and method attributes.</p>
+				<p>The AJAX results will appear in the browser console. You need either the latest version of Safari/Chrome with developer tools enabled or Firefox with firebug installed.</p>
+				<p><a href="ajaxforms.js">View JS source</a></p>
+			</div>
+			<div id="bd">
+				<form method="post" action="newfile.php" class="ajaxForm">
+					<h2>Ajax form</h2>
+					<input id="ajaxName" name="Name">
+					<input type="submit">
+				</form>
+				<form method="post" action="test2.php" class="ajaxForm">
+					<h2>Ajax form 2</h2>
+					<input id="ajaxName2" name="Name">
+					<input type="submit">
+				</form>
+				<form method="post" action="test2.php">
+					<h2>non Ajax form</h2>
+					<input id="stdName" name="Name">
+					<input type="submit">
+				</form>
+			</div>
+		</div>
+		<div id="javascripts">
+			<!--[if !IE]> Javascript goes here <![endif]-->
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+			<script src="ajaxforms.js"></script>
+			<script>
+				$('.ajaxForm').ajaxForm();
+			</script>
+		</div>
+	</body>
+</html>

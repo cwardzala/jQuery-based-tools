@@ -2,14 +2,14 @@
 	$.fn.Slider = function (o) {
 		o = $.extend( { perpage:1, perSlide:null, multipage:false, rows:1, navigation:false, fancy:false }, o );
 		var Values = function ($slider) {
-			this.page = 1;
+			this.page = 0;
 			this.itemcount	= $(".slider-item",$slider).length;
 			this.pagecount	= Math.ceil(this.itemcount/o.perpage);
 			this.itemwidth	= $(".slider-item",$slider).outerWidth();
 			this.wrapwidth	= Math.ceil(this.itemwidth*this.itemcount);
 			this.pagesize	= Math.ceil((o.perpage/o.rows)*this.itemwidth);
 			this.slideSize	= this.pagesize;
-			this.lastpage	= this.pagecount;
+			this.lastpage	= this.pagecount-1;
 			this.$track		= $(".slider-track",$slider);
 			this.$wrapper	= $('.slider-wrapper',$slider);
 			this.$sliderNav = $(".slider-nav", $slider);
@@ -24,22 +24,23 @@
 			var val = new Values(this),
 			methods = {
 				next: function () {
-					if (val.page === 1 || val.page !== val.lastpage) {
+					
+					if (val.page === 0 || val.page !== val.lastpage) {
+						val.page = val.page+1;
 						methods.Slide(val.page);
 						if (o.navigation === true) { Navigation.Update(val.page); }
-					}
-					else if (val.page === val.lastpage) {
+					} else if (val.page === val.lastpage) {
 						methods.Slide(0);
 						if (o.navigation === true) { Navigation.Update(val.page); } 
 					}
 				},
 				prev: function () {
-					if (val.page !== 1 || val.page === val.lastpage) { 
-						methods.Slide(val.page-1);
+					if (val.page !== 0 || val.page === val.lastpage) {
+						val.page = val.page-1;
+						methods.Slide(val.page);
 						if (o.navigation === true) { Navigation.Update(val.page); }
-					}
-					else if(val.page === 1) {
-						methods.Slide(val.page+2);
+					} else if (val.page === 0) {
+						methods.Slide(val.lastpage);
 						if (o.navigation === true) { Navigation.Update(val.page); }
 					}
 				},
@@ -48,15 +49,12 @@
 					val.page = index;
 					Navigation.Update(index);
 				},
-				Click: function(index){
-					
-					methods.Slide(index);
-				}
+				Click: function(index){ methods.Slide(index); }
 			},
 			Navigation = {
 				Update: function(index){
 					val.$sliderNav.find('li.active').removeClass('active');
-					$('li',val.$sliderNav).eq(index-1).addClass("active");
+					$('li',val.$sliderNav).eq(index).addClass("active");
 				},
 				Setup: function(){
 					for (var si=0; si<val.pagecount; ++si){
@@ -96,7 +94,6 @@
 				val.$prev.hide();
 			}
 		};
-	
 		return this.each(this.doit);
 	};
 })(jQuery);
